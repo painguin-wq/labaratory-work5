@@ -1,0 +1,75 @@
+[
+  {
+    "id": 1,
+    "name": "342",
+    "coordinates": {
+      "x": 423,
+      "y": 423
+    },
+    "creationDate": "2024-03-20",
+    "area": 423.0,
+    "numberOfBathrooms": 0,
+    "timeToMetroByTransport": 4.0,
+    "furnish": 0,
+    "house": {
+      "name": "23",
+      "year": 423,
+      "numberOfLifts": 4
+    }
+  },
+  {
+    "id": 2,
+    "name": "432",
+    "coordinates": {
+      "x": 423,
+      "y": 423
+    },
+    "creationDate": "2024-03-20",
+    "area": 4.0,
+    "numberOfBathrooms": 0,
+    "timeToMetroByTransport": 34.0,
+    "furnish": 0,
+    "house": {
+      "name": "324",
+      "year": 24,
+      "numberOfLifts": 32
+    }
+  },
+  {
+    "id": 3,
+    "name": "423",
+    "coordinates": {
+      "x": 324,
+      "y": 32
+    },
+    "creationDate": "2024-03-20",
+    "area": 42.0,
+    "numberOfBathrooms": 0,
+    "timeToMetroByTransport": 234.0,
+    "furnish": 0,
+    "house": {
+      "name": "23",
+      "year": 432,
+      "numberOfLifts": 42
+    }
+  },
+  {
+    "id": 4,
+    "name": "32",
+    "coordinates": {
+      "x": 32,
+      "y": 32
+    },
+    "creationDate": "2024-03-21",
+    "area": 32.0,
+    "numberOfRooms": 32,
+    "numberOfBathrooms": 32,
+    "timeToMetroByTransport": 32.0,
+    "furnish": 0,
+    "house": {
+      "name": "kfejdv",
+      "year": 32,
+      "numberOfLifts": 32
+    }
+  }
+]
