@@ -6,6 +6,8 @@ import dev.infochem.application.command.ShowCommand;
 import dev.infochem.clilibrary.Application;
 import dev.infochem.clilibrary.Project;
 
+import java.util.Scanner;
+
 public class App extends Application {
     @Override
     public void apply(Project project) {
@@ -15,6 +17,8 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        System.out.print("Enter commands: ");
+        String[] cmdArgs = new Scanner(System.in).nextLine().split(" ");
+        launch(cmdArgs);
     }
 }
