@@ -9,7 +9,6 @@ public class FlatSerializer implements JsonSerializer<Flat> {
     @Override
     public JsonElement serialize(Flat flat, Type type, JsonSerializationContext jsonSerializationContext) {
         JsonObject object = new JsonObject();
-        object.add("id", new JsonPrimitive(flat.getId()));
         object.add("name", new JsonPrimitive(flat.getName()));
         object.add("coordinates", new CoordinatesSerializer().serialize(flat.getCoordinates(), type, jsonSerializationContext));
         object.add("creationDate", new JsonPrimitive(flat.getCreationDate().toString()));
