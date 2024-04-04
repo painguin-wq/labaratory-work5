@@ -1,8 +1,6 @@
 package dev.infochem.application;
 
-import dev.infochem.application.command.AddCommand;
-import dev.infochem.application.command.HelpCommand;
-import dev.infochem.application.command.ShowCommand;
+import dev.infochem.application.command.*;
 import dev.infochem.clilibrary.Application;
 import dev.infochem.clilibrary.Project;
 
@@ -14,6 +12,8 @@ public class App extends Application {
         project.getCommands().register("show", ShowCommand.class);
         project.getCommands().register("add", AddCommand.class);
         project.getCommands().register("help", HelpCommand.class);
+        project.getCommands().register("execute_script", ExecuteScriptCommand.class);
+        project.getCommands().register("remove_first", RemoveFirstCommand.class);
     }
 
     public static void main(String[] args) {
