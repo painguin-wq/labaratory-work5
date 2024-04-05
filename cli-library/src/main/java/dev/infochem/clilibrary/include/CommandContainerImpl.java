@@ -16,6 +16,9 @@ public class CommandContainerImpl implements CommandContainer {
 
     @Override
     public void register(String command, Class<? extends Command> commandClass) {
+        if (command.isEmpty()) {
+            throw new UnsupportedOperationException("Cannot add empty command");
+        }
         if (!contains(command)) {
             try {
                 Constructor<? extends Command> commandConstructor = commandClass.getConstructor();

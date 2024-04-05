@@ -37,7 +37,7 @@ public class FlatManager implements DataManager<ArrayDeque<Flat>> {
     }
     @Override
     public ArrayDeque<Flat> getData() {
-       return flats.clone();
+       return flats;
     }
 
     private ArrayDeque<Flat> readData() {

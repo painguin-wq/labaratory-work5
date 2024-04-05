@@ -21,7 +21,6 @@ public class RemoveByIdCommand extends DefaultCommand {
             } else {
                 System.err.printf("There are no item with id = %d%n", id);
             }
-            flatManager.saveData(flats);
         } else {
             System.err.println("There are no items to delete in the database");
         }

@@ -62,7 +62,6 @@ public class AddCommand extends DefaultCommand {
         FlatManager dataManager = FileManagerFactory.create();
         ArrayDeque<Flat> flats = dataManager.getData();
         flats.add(createFlat());
-        dataManager.saveData(flats);
     }
 
     @Override

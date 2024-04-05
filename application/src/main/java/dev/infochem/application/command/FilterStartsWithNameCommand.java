@@ -8,25 +8,24 @@ import dev.infochem.clilibrary.DefaultCommand;
 
 import java.util.ArrayDeque;
 
-public class RemoveFirstCommand extends DefaultCommand {
+public class FilterStartsWithNameCommand extends DefaultCommand {
     @CommandAction
-    void remove() {
-        FlatManager flatManager = FileManagerFactory.create();
-        ArrayDeque<Flat> flats = flatManager.getData();
-        if (!flats.isEmpty()) {
-            flats.removeFirst();
-        } else {
-            System.err.println("There are no items to delete in the database");
+    void filter(String prefix) {
+        FlatManager fileManager = FileManagerFactory.create();
+        ArrayDeque<Flat> flats = fileManager.getData();
+        for (Flat flat : flats) {
+            if (flat.getName().startsWith(prefix)){
+                System.out.println(flat);
+            }
         }
     }
-
     @Override
     public String getCaption() {
-        return "Delete the first item in the collection";
+        return null;
     }
 
     @Override
     public String getMask() {
-        return "remove_first";
+        return null;
     }
 }
