@@ -14,16 +14,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class FlatManager implements DataManager<ArrayDeque<Flat>> {
-    private static final File DATABASE_FILE = new File("/Users/stanislavserbakov/Desktop/Java/lab5/application/src/main/resources/database.json");
+    private final File DATABASE_FILE;
     private final JsonSerializer<Flat> serializer = new FlatSerializer();
     private final JsonDeserializer<Flat> deserializer = new FlatDeserializer();
-    private ArrayDeque<Flat> flats = new ArrayDeque<>();
+    private ArrayDeque<Flat> flats;
 
-    private FlatManager(){
-        flats = readData();
-    }
+    private Long sequenceID = null;
 
-    static {
+    private FlatManager(String pathToDatabase){
+        DATABASE_FILE = new File(pathToDatabase);
         if (!DATABASE_FILE.exists()) {
             try {
                 if (!DATABASE_FILE.createNewFile()) {
@@ -34,6 +33,7 @@ public class FlatManager implements DataManager<ArrayDeque<Flat>> {
             }
         }
         SessionFactory.create(DATABASE_FILE);
+        flats = readData();
     }
     @Override
     public ArrayDeque<Flat> getData() {
@@ -45,8 +45,10 @@ public class FlatManager implements DataManager<ArrayDeque<Flat>> {
         JsonArray flatsArray = session.readJson(JsonArray.class);
         ArrayDeque<Flat> flatArrayDeque = new ArrayDeque<>();
         if (flatsArray != null && !flatsArray.isEmpty()) {
-            for (JsonElement flatElement : flatsArray) {
-                flatArrayDeque.add(deserializer.deserialize(flatElement, Flat.class, null));
+            for (int i = 0; i < flatsArray.size(); i++) {
+                Flat flat = deserializer.deserialize(flatsArray.get(i), Flat.class, null);
+                flat.setId(i);
+                flatArrayDeque.add(flat);
             }
         }
         return sortFlats(flatArrayDeque);
@@ -72,10 +74,22 @@ public class FlatManager implements DataManager<ArrayDeque<Flat>> {
 
     @Override
     public long generateID() {
+        if (flats == null) {
+            return generateSequenceID();
+        }
        if (getData().isEmpty()) {
            return 1;
        } else {
            return getData().getLast().getId() + 1;
        }
+    }
+
+    private long generateSequenceID() {
+        if (sequenceID == null) {
+            sequenceID = 0L;
+            return sequenceID;
+        } else {
+            return sequenceID++;
+        }
     }
 }
