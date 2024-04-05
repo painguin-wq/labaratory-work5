@@ -13,6 +13,7 @@ public class App extends Application {
         project.getCommands().register("show", ShowCommand.class);
         project.getCommands().register("add", AddCommand.class);
         project.getCommands().register("help", HelpCommand.class);
+        project.getCommands().register("update", UpdateCommand.class);
         project.getCommands().register("execute_script", ExecuteScriptCommand.class);
         project.getCommands().register("remove_first", RemoveFirstCommand.class);
         project.getCommands().register("remove_head", RemoveHeadCommand.class);
