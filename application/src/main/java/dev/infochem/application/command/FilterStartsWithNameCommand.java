@@ -8,7 +8,15 @@ import dev.infochem.clilibrary.DefaultCommand;
 
 import java.util.ArrayDeque;
 
+/**
+ * The type Filter starts with name command.
+ */
 public class FilterStartsWithNameCommand extends DefaultCommand {
+    /**
+     * Filter.
+     *
+     * @param prefix the prefix
+     */
     @CommandAction
     void filter(String prefix) {
         FlatManager fileManager = FileManagerFactory.create();
@@ -21,11 +29,11 @@ public class FilterStartsWithNameCommand extends DefaultCommand {
     }
     @Override
     public String getCaption() {
-        return null;
+        return "output items whose name field value starts with the specified substring";
     }
 
     @Override
     public String getMask() {
-        return null;
+        return "filter_starts_with_name <prefix>";
     }
 }

@@ -7,6 +7,9 @@ import dev.infochem.clilibrary.Project;
 
 import java.util.Scanner;
 
+/**
+ * The type App.
+ */
 public class App extends Application {
     @Override
     public void apply(Project project) {
@@ -24,6 +27,11 @@ public class App extends Application {
         project.getCommands().register("clear", ClearCommand.class);
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         if (args.length > 0) {
             String pathToDatabase = args[0];

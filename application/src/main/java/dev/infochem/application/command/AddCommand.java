@@ -8,6 +8,9 @@ import dev.infochem.clilibrary.DefaultCommand;
 
 import java.util.ArrayDeque;
 
+/**
+ * The type Add command.
+ */
 public class AddCommand extends DefaultCommand {
     private final CommandsScanner scanner = new CommandsScanner(System.in);
     private Coordinates createCoordinates() {
@@ -57,6 +60,10 @@ public class AddCommand extends DefaultCommand {
         flat.setHouse(createHouse());
         return new FlatFactory(FileManagerFactory.create()).create(flat).build();
     }
+
+    /**
+     * Execute.
+     */
     @CommandAction
     void execute() {
         FlatManager dataManager = FileManagerFactory.create();

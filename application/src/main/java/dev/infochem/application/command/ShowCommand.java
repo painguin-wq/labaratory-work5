@@ -8,7 +8,13 @@ import dev.infochem.clilibrary.DefaultCommand;
 
 import java.util.ArrayDeque;
 
+/**
+ * The type Show command.
+ */
 public final class ShowCommand extends DefaultCommand {
+    /**
+     * Gets info.
+     */
     @CommandAction
     public void getInfo() {
         FlatManager fileManager = FileManagerFactory.create();

@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * The type Flat manager.
+ */
 public class FlatManager implements DataManager<ArrayDeque<Flat>> {
     private final File DATABASE_FILE;
     private final JsonSerializer<Flat> serializer = new FlatSerializer();

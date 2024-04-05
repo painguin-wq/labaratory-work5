@@ -5,6 +5,9 @@ import dev.infochem.application.model.Flat;
 
 import java.lang.reflect.Type;
 
+/**
+ * The type Flat serializer.
+ */
 public class FlatSerializer implements JsonSerializer<Flat> {
     @Override
     public JsonElement serialize(Flat flat, Type type, JsonSerializationContext jsonSerializationContext) {

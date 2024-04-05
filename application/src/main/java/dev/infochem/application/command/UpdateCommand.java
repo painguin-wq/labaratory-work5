@@ -9,7 +9,15 @@ import dev.infochem.clilibrary.DefaultCommand;
 import java.util.ArrayDeque;
 import java.util.List;
 
+/**
+ * The type Update command.
+ */
 public class UpdateCommand extends DefaultCommand {
+    /**
+     * Update.
+     *
+     * @param id the id
+     */
     @CommandAction
     void update(Integer id) {
         FlatManager dataManager = FileManagerFactory.create();

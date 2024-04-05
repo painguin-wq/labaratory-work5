@@ -8,7 +8,13 @@ import dev.infochem.clilibrary.DefaultCommand;
 
 import java.util.ArrayDeque;
 
+/**
+ * The type Print ascending command.
+ */
 public class PrintAscendingCommand extends DefaultCommand {
+    /**
+     * Print.
+     */
     @CommandAction
     void print() {
         FlatManager fileManager = FileManagerFactory.create();
@@ -19,11 +25,11 @@ public class PrintAscendingCommand extends DefaultCommand {
     }
     @Override
     public String getCaption() {
-        return null;
+        return "output the elements of the collection in ascending order";
     }
 
     @Override
     public String getMask() {
-        return null;
+        return "print_ascending";
     }
 }

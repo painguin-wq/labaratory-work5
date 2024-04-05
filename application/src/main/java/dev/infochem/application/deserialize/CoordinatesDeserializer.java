@@ -5,6 +5,9 @@ import dev.infochem.application.model.Coordinates;
 
 import java.lang.reflect.Type;
 
+/**
+ * The type Coordinates deserializer.
+ */
 public class CoordinatesDeserializer implements JsonDeserializer<Coordinates> {
     @Override
     public Coordinates deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {

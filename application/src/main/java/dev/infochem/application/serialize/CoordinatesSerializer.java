@@ -5,6 +5,9 @@ import dev.infochem.application.model.Coordinates;
 
 import java.lang.reflect.Type;
 
+/**
+ * The type Coordinates serializer.
+ */
 public class CoordinatesSerializer implements JsonSerializer<Coordinates> {
     @Override
     public JsonElement serialize(Coordinates coordinates, Type type, JsonSerializationContext jsonSerializationContext) {

@@ -3,7 +3,13 @@ package dev.infochem.application.command;
 import dev.infochem.clilibrary.CommandAction;
 import dev.infochem.clilibrary.DefaultCommand;
 
+/**
+ * The type Help command.
+ */
 public class HelpCommand extends DefaultCommand {
+    /**
+     * Gets help.
+     */
     @CommandAction
     void getHelp() {
         getProject().getCommands().forEach(command ->

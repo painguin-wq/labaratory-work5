@@ -8,7 +8,15 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Execute script command.
+ */
 public class ExecuteScriptCommand extends DefaultCommand {
+    /**
+     * Execute.
+     *
+     * @param path the path
+     */
     @CommandAction
     void execute(String path) {
         File file = new File(path);
