@@ -14,9 +14,12 @@ public class App extends Application {
         project.getCommands().register("help", HelpCommand.class);
         project.getCommands().register("execute_script", ExecuteScriptCommand.class);
         project.getCommands().register("remove_first", RemoveFirstCommand.class);
+        project.getCommands().register("remove_head", RemoveHeadCommand.class);
+        project.getCommands().register("remove_by_id", RemoveByIdCommand.class);
     }
 
     public static void main(String[] args) {
+
         System.out.print("Enter commands: ");
         String[] cmdArgs = new Scanner(System.in).nextLine().split(" ");
         launch(cmdArgs);

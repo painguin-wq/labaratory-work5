@@ -45,10 +45,10 @@ public class ParserImpl implements Parser {
     }
 
     private void typedAdd(String arg, ArrayList<Object> objects) {
-        if (Integer.getInteger(arg, null) != null) {
+        try {
             objects.add(Integer.parseInt(arg));
             return;
-        }
+        } catch (NumberFormatException ignored) {}
         try {
             objects.add(Double.parseDouble(arg));
         } catch (NumberFormatException e) {

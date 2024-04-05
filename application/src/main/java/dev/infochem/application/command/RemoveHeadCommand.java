@@ -8,17 +8,19 @@ import dev.infochem.clilibrary.DefaultCommand;
 
 import java.util.ArrayDeque;
 
-public class RemoveFirstCommand extends DefaultCommand {
+public class RemoveHeadCommand extends DefaultCommand {
     @CommandAction
     void remove() {
         FlatManager flatManager = FileManagerFactory.create();
         ArrayDeque<Flat> flats = flatManager.getData();
         if (!flats.isEmpty()) {
-            flats.removeFirst();
+            Flat deletedFlat = flats.removeFirst();
             flatManager.saveData(flats);
+            System.out.printf("Flat deleted: %s%n", deletedFlat);
         } else {
             System.err.println("There are no items to delete in the database");
         }
+
     }
 
     @Override

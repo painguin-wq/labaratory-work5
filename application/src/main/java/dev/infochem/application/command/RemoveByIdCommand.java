@@ -7,14 +7,20 @@ import dev.infochem.clilibrary.CommandAction;
 import dev.infochem.clilibrary.DefaultCommand;
 
 import java.util.ArrayDeque;
+import java.util.Optional;
 
-public class RemoveFirstCommand extends DefaultCommand {
+public class RemoveByIdCommand extends DefaultCommand {
     @CommandAction
-    void remove() {
+    void remove(Integer id) {
         FlatManager flatManager = FileManagerFactory.create();
         ArrayDeque<Flat> flats = flatManager.getData();
         if (!flats.isEmpty()) {
-            flats.removeFirst();
+            Optional<Flat> flatOpt = flats.stream().filter(flatFromStream -> flatFromStream.getId() == id).findFirst();
+            if (flatOpt.isPresent()) {
+                flats.remove(flatOpt.get());
+            } else {
+                System.err.printf("There are no item with id = %d%n", id);
+            }
             flatManager.saveData(flats);
         } else {
             System.err.println("There are no items to delete in the database");
