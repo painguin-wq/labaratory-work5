@@ -23,11 +23,11 @@ public class RemoveFirstCommand extends DefaultCommand {
 
     @Override
     public String getCaption() {
-        return null;
+        return "Delete the first item in the collection";
     }
 
     @Override
     public String getMask() {
-        return null;
+        return "remove_first";
     }
 }

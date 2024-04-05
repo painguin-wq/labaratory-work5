@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ExecuteScriptCommand extends DefaultCommand {
     @CommandAction
-    void execute(String path) throws FileNotFoundException {
+    void execute(String path) {
         File file = new File(path);
         if (!file.exists()) {
             System.err.printf("There is no such file (path: %s)%n", path);
@@ -35,11 +35,11 @@ public class ExecuteScriptCommand extends DefaultCommand {
 
     @Override
     public String getCaption() {
-        return null;
+        return "Read and execute a script from a specified file. The script contains commands in the same form in which they are entered by the user in interactive mode.";
     }
 
     @Override
     public String getMask() {
-        return null;
+        return "execute_script <path>";
     }
 }

@@ -25,11 +25,11 @@ public class RemoveHeadCommand extends DefaultCommand {
 
     @Override
     public String getCaption() {
-        return null;
+        return "Output the first element of the collection and delete it";
     }
 
     @Override
     public String getMask() {
-        return null;
+        return "remove_head";
     }
 }

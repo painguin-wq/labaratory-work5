@@ -11,7 +11,7 @@ import java.util.List;
 
 public class UpdateCommand extends DefaultCommand {
     @CommandAction
-    void update(int id) {
+    void update(Integer id) {
         FlatManager dataManager = FileManagerFactory.create();
         ArrayDeque<Flat> flatArrayDeque = dataManager.getData();
         List<Flat> flats = flatArrayDeque.stream().filter(flat -> flat.getId() == id).toList();
@@ -22,11 +22,11 @@ public class UpdateCommand extends DefaultCommand {
     }
     @Override
     public String getCaption() {
-        return null;
+        return "Update the value of the collection item whose id is equal to the given one";
     }
 
     @Override
     public String getMask() {
-        return null;
+        return "update <id>";
     }
 }

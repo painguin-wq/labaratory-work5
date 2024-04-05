@@ -67,11 +67,11 @@ public class AddCommand extends DefaultCommand {
 
     @Override
     public String getCaption() {
-        return null;
+        return "Add a new item to the collection";
     }
 
     @Override
     public String getMask() {
-        return null;
+        return "add {element}";
     }
 }

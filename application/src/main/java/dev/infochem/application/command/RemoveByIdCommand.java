@@ -29,11 +29,11 @@ public class RemoveByIdCommand extends DefaultCommand {
 
     @Override
     public String getCaption() {
-        return null;
+        return "Remove an item from the collection by its id";
     }
 
     @Override
     public String getMask() {
-        return null;
+        return "remove_by_id <id>";
     }
 }

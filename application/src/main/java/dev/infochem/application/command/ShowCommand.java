@@ -19,11 +19,12 @@ public final class ShowCommand extends DefaultCommand {
     }
     @Override
     public String getCaption() {
-        return null;
+        return "Output all elements of the collection in string representation to the standard output stream";
     }
+
 
     @Override
     public String getMask() {
-        return null;
+        return "show";
     }
 }

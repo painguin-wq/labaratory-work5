@@ -11,11 +11,11 @@ public class HelpCommand extends DefaultCommand {
     }
     @Override
     public String getCaption() {
-        return null;
+        return "Display help for available commands";
     }
 
     @Override
     public String getMask() {
-        return null;
+        return "help";
     }
 }
