@@ -1,6 +1,5 @@
 package dev.infochem.clilibrary;
 
-import java.util.Iterator;
 import java.util.function.Consumer;
 
 public interface CommandContainer {
@@ -13,4 +12,6 @@ public interface CommandContainer {
     boolean contains(String name);
 
     void forEach(Consumer<? super Command> action);
+
+    boolean isEmpty();
 }

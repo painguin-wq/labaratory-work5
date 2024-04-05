@@ -5,9 +5,7 @@ import dev.infochem.clilibrary.CommandContainer;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -60,5 +58,10 @@ public class CommandContainerImpl implements CommandContainer {
     @Override
     public void forEach(Consumer<? super Command> action) {
         container.forEach((name, command) -> action.accept(command));
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return container.isEmpty();
     }
 }

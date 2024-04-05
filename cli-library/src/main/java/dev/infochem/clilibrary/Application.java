@@ -7,7 +7,6 @@ import dev.infochem.clilibrary.include.ProjectModule;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 public abstract class Application {
     public abstract void apply(Project project);
@@ -84,9 +83,13 @@ public abstract class Application {
     }
 
     private static void executeActions(Project project, String[] args) {
-        Action[] actions = project.getParser().parse(args);
-        for (Action action : actions) {
-            action.execute();
+        try {
+            Action[] actions = project.getParser().parse(args);
+            for (Action action : actions) {
+                action.execute();
+            }
+        } catch (UnknownCommandException e) {
+            System.err.println("No commands found");
         }
     }
 }
