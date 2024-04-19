@@ -36,11 +36,11 @@ public class CountGreaterThanFurnish extends DefaultCommand {
 
     @Override
     public String getCaption() {
-        return null;
+        return "Count elements of furnish greater than entered value";
     }
 
     @Override
     public String getMask() {
-        return null;
+        return "count_greater_than_furnish <NONE, BAD, LITTLE>";
     }
 }
