@@ -10,11 +10,11 @@ public class RemoveGreaterCommand extends DefaultCommand {
     }
     @Override
     public String getCaption() {
-        return null;
+        return "Output the greater element of the collection and delete it";
     }
 
     @Override
     public String getMask() {
-        return null;
+        return "remove_greater";
     }
 }
