@@ -15,6 +15,6 @@ public class RemoveGreaterCommand extends DefaultCommand {
 
     @Override
     public String getMask() {
-        return "remove_greater";
+        return "remove_greater <element>";
     }
 }
