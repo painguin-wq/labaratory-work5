@@ -16,6 +16,7 @@ public class App extends Application {
         project.getCommands().register("execute_script", ExecuteScriptCommand.class);
         project.getCommands().register("remove_first", RemoveFirstCommand.class);
         project.getCommands().register("remove_head", RemoveHeadCommand.class);
+        project.getCommands().register("remove_greater", RemoveGreaterCommand.class);
         project.getCommands().register("remove_by_id", RemoveByIdCommand.class);
         project.getCommands().register("save", SaveCommand.class);
         project.getCommands().register("print_ascending", PrintAscendingCommand.class);
