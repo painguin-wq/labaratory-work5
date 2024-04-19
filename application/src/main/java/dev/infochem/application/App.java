@@ -5,8 +5,6 @@ import dev.infochem.application.database.FileManagerFactory;
 import dev.infochem.clilibrary.Application;
 import dev.infochem.clilibrary.Project;
 
-import java.util.Scanner;
-
 public class App extends Application {
     @Override
     public void apply(Project project) {
@@ -22,6 +20,7 @@ public class App extends Application {
         project.getCommands().register("print_ascending", PrintAscendingCommand.class);
         project.getCommands().register("filter_starts_with_name", FilterStartsWithNameCommand.class);
         project.getCommands().register("clear", ClearCommand.class);
+        project.getCommands().register("count_greater_than_furnish", CountGreaterThanFurnish.class);
     }
 
     public static void main(String[] args) {
