@@ -93,7 +93,7 @@ public class FlatManager implements DataManager<ArrayDeque<Flat>> {
             return generateSequenceID();
         }
        if (getData().isEmpty()) {
-           return 1;
+           return 0;
        } else {
            return flats.getLast().getId() + 1;
        }
@@ -104,7 +104,7 @@ public class FlatManager implements DataManager<ArrayDeque<Flat>> {
             sequenceID = 0L;
             return sequenceID;
         } else {
-            return sequenceID++;
+            return ++sequenceID;
         }
     }
 }
