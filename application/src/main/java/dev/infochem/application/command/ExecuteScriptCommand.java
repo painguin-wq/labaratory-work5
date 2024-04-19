@@ -1,12 +1,11 @@
 package dev.infochem.application.command;
 
-import dev.infochem.clilibrary.Action;
+import dev.infochem.clilibrary.Application;
 import dev.infochem.clilibrary.CommandAction;
 import dev.infochem.clilibrary.DefaultCommand;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The type Execute script command.
@@ -21,23 +20,26 @@ public class ExecuteScriptCommand extends DefaultCommand {
     void execute(String path) {
         File file = new File(path);
         if (!file.exists()) {
-            System.err.printf("There is no such file (path: %s)%n", path);
+            System.out.printf("Данный файл (path: %s) не существует или не был найден%n", path);
             return;
         }
-        if (file.canRead()) {
-            System.err.printf("This file(path: %s) cannot be read%n", path);
+        if (!file.canRead()) {
+            System.out.printf("Данный файл(Путь: %s) не может быть прочитан %n", path);
             return;
         }
         ArrayList<String> commands = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            reader.lines().map((line) -> commands.addAll(List.of(line.split(" ")))).close();
+            reader.lines().forEach(commands::add);
         } catch (IOException e) {
-            System.err.printf("File reading error (path: %s)%n", path);
+            System.out.printf("Ошибка чтения файла (Путь: %s)%n", path);
             return;
         }
-        Action[] actions = getProject().getParser().parse(commands.toArray(new String[0]));
-        for (Action action : actions) {
-            action.execute();
+        if (commands.contains(getProject().getCommands().getNameByType(ExecuteScriptCommand.class))) {
+            System.out.printf("Файл скрипта не может рекурсивно содержать комманду %s%n", getProject().getCommands().getNameByType(ExecuteScriptCommand.class));
+            return;
+        }
+        for (String cmd : commands) {
+            Application.executeActions(getProject(), cmd.split(" "));
         }
     }
 
