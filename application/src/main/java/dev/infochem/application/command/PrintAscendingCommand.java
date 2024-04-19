@@ -19,7 +19,7 @@ public class PrintAscendingCommand extends DefaultCommand {
     void print() {
         FlatManager fileManager = FileManagerFactory.create();
         ArrayDeque<Flat> flats = fileManager.getData();
-        for (Flat flat : flats) {
+        for (Flat flat : fileManager.sortFlats(flats)) {
             System.out.println(flat);
         }
     }

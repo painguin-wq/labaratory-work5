@@ -22,23 +22,33 @@ public class UpdateCommand extends DefaultCommand {
      * @param id the id
      */
     @CommandAction
-    void update(Integer id) throws NoSuchFieldException, IllegalAccessException {
+    void update(Integer id) {
         FlatManager dataManager = FileManagerFactory.create();
         Optional<Flat> flatOpt = dataManager.getData().stream().filter(flat1 -> flat1.getId() == id).findFirst();
         if (flatOpt.isPresent()) {
             Flat flat = flatOpt.get();
-            System.out.println("Enter name of the that you want to change.\nList of available elements");
-            System.out.println("\t- name (String)");
-            System.out.println("\t- coordinates (Coordinates)");
-            System.out.println("\t- area (Float)");
-            System.out.println("\t- numberOfRooms (Long)");
-            System.out.println("\t- numberOfBathrooms (Long)");
-            System.out.println("\t- timeToMetroByTransport (Float)");
-            System.out.println("\t- furnish (Furnish)");
-            System.out.println("\t- house (House)");
-
+            System.out.println("Введите название элемента, который вы хотите изменить.\n");
+            String listOfElements = """
+                    Список доступных элементов:\s
+                    \t- name (String)
+                    \t- coordinates (Coordinates)
+                    \t- area (Float)
+                    \t- numberOfRooms (Long)
+                    \t- numberOfBathrooms (Long)
+                    \t- timeToMetroByTransport (Float)
+                    \t- furnish (Furnish)
+                    \t- house (House)
+                    """;
+            System.out.print(listOfElements);
             CommandsScanner scanner = new CommandsScanner(System.in);
-            Field field = Flat.class.getDeclaredField(scanner.nextCommand());
+            Field field = null;
+            while (field == null) {
+                try {
+                    field = Flat.class.getDeclaredField(scanner.nextCommand());
+                } catch (NoSuchFieldException e) {
+                    System.out.println("Данный элемент не был найден");
+                }
+            }
             System.out.printf("Enter new value of field \"%s\": ", field.getName());
             field.setAccessible(true);
             String newValue = scanner.nextCommand();
@@ -69,7 +79,7 @@ public class UpdateCommand extends DefaultCommand {
             }
 
         } else {
-            System.err.printf("Cannot find element with id = %d%n", id);
+            System.out.printf("Не удается найти элемент с id = %d%n", id);
         }
 
     }

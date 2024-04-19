@@ -69,7 +69,6 @@ public class FlatManager implements DataManager<ArrayDeque<Flat>> {
         for (Flat flat : flatsNew) {
             jsonArray.add(serializer.serialize(flat, Flat.class, null));
         }
-        System.out.println(jsonArray);
         session.writeJson(jsonArray);
         this.flats = flatsNew;
     }
@@ -82,7 +81,7 @@ public class FlatManager implements DataManager<ArrayDeque<Flat>> {
        if (getData().isEmpty()) {
            return 1;
        } else {
-           return getData().getLast().getId() + 1;
+           return flats.getLast().getId() + 1;
        }
     }
 

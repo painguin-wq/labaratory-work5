@@ -43,6 +43,7 @@ public class ParserImpl implements Parser {
         if (commandBuffer != null) {
             actions.add(commandBuffer.getAction(buffer.toArray()));
         }
+        actions.remove(null);
         return actions.toArray(new Action[]{});
     }
 

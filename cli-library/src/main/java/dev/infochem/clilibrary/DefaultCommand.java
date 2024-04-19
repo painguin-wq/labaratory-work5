@@ -58,7 +58,10 @@ public abstract class DefaultCommand implements Command {
                 };
             }
         }
-        throw new UnsupportedOperationException("Cannot find action with those parameters in the %s command".formatted(this.getClass().getSimpleName()));
+        String command = getProject().getCommands().getNameByType(getClass());
+        System.out.printf("Не удается найти действие с этими параметрами в команде %s%n", command);
+        System.out.printf("Вы можете использовать команду %s используя маску: %s%n", command, getProject().getCommands().get(command).getMask());
+        return null;
     }
 
     private boolean compareTypes(Class<?>[] parsedArray, Class<?>[] requirementsArray) {

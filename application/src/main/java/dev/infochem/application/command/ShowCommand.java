@@ -19,6 +19,10 @@ public final class ShowCommand extends DefaultCommand {
     public void getInfo() {
         FlatManager fileManager = FileManagerFactory.create();
         ArrayDeque<Flat> flats = fileManager.getData();
+        if (flats.isEmpty()) {
+            System.out.println("Коллекция пустая");
+            return;
+        }
         for (Flat flat : fileManager.sortFlats(flats)) {
             System.out.println(flat);
         }
