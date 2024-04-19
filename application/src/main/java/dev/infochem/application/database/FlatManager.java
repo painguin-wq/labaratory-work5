@@ -1,6 +1,8 @@
 package dev.infochem.application.database;
 
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonSerializer;
 import dev.infochem.application.deserialize.FlatDeserializer;
 import dev.infochem.application.model.Flat;
 import dev.infochem.application.serialize.FlatSerializer;
@@ -10,7 +12,7 @@ import dev.infochem.transactionapi.SessionFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayDeque;
 import java.util.stream.Collectors;
 
 /**
@@ -60,6 +62,18 @@ public class FlatManager implements DataManager<ArrayDeque<Flat>> {
     public ArrayDeque<Flat> sortFlats(ArrayDeque<Flat> flats) {
         return flats.stream().sorted((flat1, flat2) -> Float.compare(flat1.getArea(), flat2.getArea())).collect(Collectors.toCollection(ArrayDeque::new));
     }
+
+    public void resolveIds() {
+        ArrayDeque<Flat> flats = new ArrayDeque<>();
+        sequenceID = 0L;
+        ArrayDeque<Flat> flatsCopy = this.flats.clone();
+        this.flats = null;
+        for (Flat flat : flatsCopy) {
+            flat.setId(generateID());
+            flats.add(flat);
+        }
+        this.flats = flats;
+     }
 
     @Override
     public void saveData(ArrayDeque<Flat> flats) {

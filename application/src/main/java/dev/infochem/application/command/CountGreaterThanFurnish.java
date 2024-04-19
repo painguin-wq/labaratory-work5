@@ -14,11 +14,13 @@ public class CountGreaterThanFurnish extends DefaultCommand {
     void count(String furnish) {
         int furnishNumber = -1;
         while (furnishNumber == -1) {
-            try {
-                furnishNumber = Furnish.valueOf(furnish).ordinal();
-            } catch (IllegalArgumentException ex) {
+            for (Furnish furnishValue : Furnish.values()) {
+                if (furnish.equals(furnishValue.name()) || furnish.toUpperCase().equals(furnishValue.name())) {
+                    furnishNumber = furnishValue.ordinal();
+                }
+            }
+            if (furnishNumber == -1){
                 System.out.println("В параметр команды count_greater_than_furnish нужно передать один из элементов из enum Furnish.\nДоступные элементы:  NONE, BAD, LITTLE");
-                furnishNumber = Furnish.valueOf(furnish).ordinal();
             }
         }
         FlatManager fileManager = FileManagerFactory.create();
@@ -34,11 +36,11 @@ public class CountGreaterThanFurnish extends DefaultCommand {
 
     @Override
     public String getCaption() {
-        return "Count the element greater than furnish";
+        return null;
     }
 
     @Override
     public String getMask() {
-        return "count_greater_than_furnish {NONE, BAD, LITTLE}";
+        return null;
     }
 }

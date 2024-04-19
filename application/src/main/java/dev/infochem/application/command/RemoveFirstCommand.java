@@ -21,6 +21,7 @@ public class RemoveFirstCommand extends DefaultCommand {
         ArrayDeque<Flat> flats = flatManager.getData();
         if (!flats.isEmpty()) {
             flats.removeFirst();
+            flatManager.resolveIds();
         } else {
             System.err.println("There are no items to delete in the database");
         }

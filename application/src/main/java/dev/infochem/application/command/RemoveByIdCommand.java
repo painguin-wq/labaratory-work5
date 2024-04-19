@@ -26,11 +26,12 @@ public class RemoveByIdCommand extends DefaultCommand {
             Optional<Flat> flatOpt = flats.stream().filter(flatFromStream -> flatFromStream.getId() == id).findFirst();
             if (flatOpt.isPresent()) {
                 flats.remove(flatOpt.get());
+                flatManager.resolveIds();
             } else {
-                System.err.printf("There are no item with id = %d%n", id);
+                System.out.printf("There are no item with id = %d%n", id);
             }
         } else {
-            System.err.println("There are no items to delete in the database");
+            System.out.println("There are no items to delete in the database");
         }
     }
 

@@ -21,9 +21,10 @@ public class RemoveHeadCommand extends DefaultCommand {
         ArrayDeque<Flat> flats = flatManager.getData();
         if (!flats.isEmpty()) {
             Flat deletedFlat = flats.removeFirst();
+            flatManager.resolveIds();
             System.out.printf("Flat deleted: %s%n", deletedFlat);
         } else {
-            System.err.println("There are no items to delete in the database");
+            System.out.println("There are no items to delete in the database");
         }
 
     }
