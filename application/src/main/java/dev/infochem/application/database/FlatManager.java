@@ -54,22 +54,21 @@ public class FlatManager implements DataManager<ArrayDeque<Flat>> {
         return sortFlats(flatArrayDeque);
     }
 
-    private ArrayDeque<Flat> sortFlats(ArrayDeque<Flat> flats) {
+    public ArrayDeque<Flat> sortFlats(ArrayDeque<Flat> flats) {
         return flats.stream().sorted((flat1, flat2) -> Float.compare(flat1.getArea(), flat2.getArea())).collect(Collectors.toCollection(ArrayDeque::new));
     }
 
     @Override
     public void saveData(ArrayDeque<Flat> flats) {
-        if (!flats.equals(getData())) {
-            Session session = SessionFactory.create(DATABASE_FILE);
-            JsonArray jsonArray = new JsonArray();
-            ArrayDeque<Flat> flatsNew = sortFlats(flats);
-            for (Flat flat : flatsNew) {
-                jsonArray.add(serializer.serialize(flat, Flat.class, null));
-            }
-            session.writeJson(jsonArray);
-            this.flats = flatsNew;
+        Session session = SessionFactory.create(DATABASE_FILE);
+        JsonArray jsonArray = new JsonArray();
+        ArrayDeque<Flat> flatsNew = sortFlats(flats);
+        for (Flat flat : flatsNew) {
+            jsonArray.add(serializer.serialize(flat, Flat.class, null));
         }
+        System.out.println(jsonArray);
+        session.writeJson(jsonArray);
+        this.flats = flatsNew;
     }
 
     @Override

@@ -2,6 +2,7 @@ package dev.infochem.application.command;
 
 import java.io.InputStream;
 import java.util.Scanner;
+import java.util.function.Function;
 
 public class CommandsScanner {
     private final Scanner scanner;
@@ -17,24 +18,32 @@ public class CommandsScanner {
         return command;
     }
 
+    private <T> T checkedCast(Function<String, T> castFunc, String value) {
+        try {
+            return castFunc.apply(value);
+        } catch (Exception ex) {
+            throw new ClassCastException("Failed cast %s to the givven type".formatted(value));
+        }
+    }
+
     public String nextCommand() {
-        return checkExit(scanner.next());
+        return checkExit(scanner.nextLine());
     }
 
     public Integer nextInt() {
-        return checkExit(scanner.nextInt());
+        return checkedCast(Integer::parseInt, checkExit(scanner.nextLine()));
     }
 
     public Double nextDouble() {
-        return checkExit(scanner.nextDouble());
+        return checkedCast(Double::parseDouble,checkExit(scanner.nextLine()));
     }
 
     public Float nextFloat() {
-        return checkExit(scanner.nextFloat());
+        return checkedCast(Float::parseFloat, checkExit(scanner.nextLine()));
     }
 
     public Long nextLong() {
-        return checkExit(scanner.nextLong());
+        return checkedCast(Long::parseLong, checkExit(scanner.nextLine()));
     }
 
 }

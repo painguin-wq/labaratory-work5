@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import dev.infochem.clilibrary.*;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ParserImpl implements Parser {
     private final CommandContainer commandContainer;
@@ -22,6 +23,7 @@ public class ParserImpl implements Parser {
         ArrayList<Object> buffer = new ArrayList<>();
         Command commandBuffer = null;
         for (String arg : args) {
+            arg = arg.toLowerCase();
             if (getCommands().contains(arg)) {
                 Command command = getCommands().get(arg);
                 if (commandBuffer == null) {
@@ -54,5 +56,25 @@ public class ParserImpl implements Parser {
         } catch (NumberFormatException e) {
             objects.add(arg);
         }
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        ParserImpl parser = (ParserImpl) object;
+        return Objects.equals(commandContainer, parser.commandContainer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(commandContainer);
+    }
+
+    @Override
+    public String toString() {
+        return "ParserImpl{" +
+                "commandContainer=" + commandContainer +
+                '}';
     }
 }

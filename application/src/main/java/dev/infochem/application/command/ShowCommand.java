@@ -13,7 +13,7 @@ public final class ShowCommand extends DefaultCommand {
     public void getInfo() {
         FlatManager fileManager = FileManagerFactory.create();
         ArrayDeque<Flat> flats = fileManager.getData();
-        for (Flat flat : flats) {
+        for (Flat flat : fileManager.sortFlats(flats)) {
             System.out.println(flat);
         }
     }

@@ -5,9 +5,8 @@ import dev.infochem.application.database.FileManagerFactory;
 import dev.infochem.clilibrary.Application;
 import dev.infochem.clilibrary.Project;
 
-import java.util.Scanner;
-
 public class App extends Application {
+
     @Override
     public void apply(Project project) {
         project.getCommands().register("show", ShowCommand.class);
@@ -28,9 +27,13 @@ public class App extends Application {
         if (args.length > 0) {
             String pathToDatabase = args[0];
             FileManagerFactory.initialize(pathToDatabase);
-            System.out.print("Enter commands: ");
-            String[] cmdArgs = new Scanner(System.in).nextLine().split(" ");
-            launch(cmdArgs);
+            launch();
+
+            while (true) {
+                System.out.print("Enter commands: ");
+                String[] cmdArgs = new CommandsScanner(System.in).nextCommand().split(" ");
+                executeActions(getProject(), cmdArgs);
+            }
         } else {
             System.err.println("To work with the library, you need to specify the database path with the first parameter");
         }

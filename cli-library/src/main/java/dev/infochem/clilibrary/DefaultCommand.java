@@ -5,9 +5,29 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Supplier;
 
 public abstract class DefaultCommand implements Command {
     private Project project;
+
+    public <T> T inputRequest(Supplier<T> inputFunc, String requestsMessage, String castMistakeMessage) {
+        T data;
+        System.out.print(requestsMessage);
+        while (true) {
+            try {
+                data = inputFunc.get();
+                break;
+            } catch (ClassCastException | NumberFormatException exception) {
+                System.out.println(castMistakeMessage);
+                System.out.print(requestsMessage);
+            } catch (Exception exception) {
+                System.out.println(exception.getMessage());
+                System.out.print(requestsMessage);
+            }
+        }
+        return data;
+    }
 
     @Override
     public Project getProject() {
@@ -70,5 +90,22 @@ public abstract class DefaultCommand implements Command {
             return resultList.toArray();
         }
         throw new UnsupportedOperationException("Error during casting parsing parameters to required types form method");
+    }
+
+    @Override
+    public String toString() {
+        return "%s command".formatted(getProject().getCommands().getNameByType(getClass()));
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        return Objects.equals(getProject().getCommands().getNameByType(getClass()), getProject().getCommands().getNameByType(object.getClass()));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getProject().getCommands().getNameByType(getClass()));
     }
 }

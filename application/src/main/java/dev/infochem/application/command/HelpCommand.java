@@ -7,7 +7,8 @@ public class HelpCommand extends DefaultCommand {
     @CommandAction
     void getHelp() {
         getProject().getCommands().forEach(command ->
-                System.out.printf("%s - %s%n%s%n", getProject().getCommands().getNameByType(command.getClass()), command.getMask(), command.getCaption()));
+                System.out.printf("%n%s - Маска для использования команды: %s%nОписание команды: %s%n", getProject().getCommands().getNameByType(command.getClass()), command.getMask(), command.getCaption()));
+        System.out.println();
     }
     @Override
     public String getCaption() {

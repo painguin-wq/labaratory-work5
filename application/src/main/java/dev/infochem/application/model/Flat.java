@@ -74,7 +74,7 @@ public class Flat {
     }
 
     public void setNumberOfRooms(Long numberOfRooms) {
-        if (numberOfRooms < 0) {
+        if (numberOfRooms != null && numberOfRooms < 0) {
             throw new IllegalArgumentException("Field numberOfRooms should be more than 0");
         }
         this.numberOfRooms = numberOfRooms;

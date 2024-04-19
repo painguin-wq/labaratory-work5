@@ -23,13 +23,16 @@ public abstract class Application {
         }
     }
 
-    public static void launch(String... args) {
+    public static Project getProject() {
+        return project;
+    }
+
+    public static void launch() {
         Injector injector = Guice.createInjector(new ProjectModule());
         project = injector.getInstance(Project.class);
         Application application = getInstance();
         application.apply(project);
         project.getCommands().forEach(Application::injectProject);
-        executeActions(project, args);
     }
 
     private static void injectProject(Command command) {
@@ -82,14 +85,16 @@ public abstract class Application {
         return callingClassName;
     }
 
-    private static void executeActions(Project project, String[] args) {
+    public static void executeActions(Project project, String[] args) {
         try {
             Action[] actions = project.getParser().parse(args);
             for (Action action : actions) {
                 action.execute();
             }
         } catch (UnknownCommandException e) {
-            System.err.println("No commands found");
+            System.out.println("No commands found");
         }
     }
+
+
 }

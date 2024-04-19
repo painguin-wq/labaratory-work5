@@ -7,6 +7,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 public class CommandContainerImpl implements CommandContainer {
@@ -66,5 +67,25 @@ public class CommandContainerImpl implements CommandContainer {
     @Override
     public boolean isEmpty() {
         return container.isEmpty();
+    }
+
+    @Override
+    public String toString() {
+        return "CommandContainerImpl{" +
+                "container=" + container +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        CommandContainerImpl that = (CommandContainerImpl) object;
+        return Objects.equals(container, that.container);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(container);
     }
 }

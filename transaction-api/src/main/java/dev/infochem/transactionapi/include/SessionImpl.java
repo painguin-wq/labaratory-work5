@@ -5,6 +5,7 @@ import dev.infochem.transactionapi.Session;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 
 public class SessionImpl implements Session {
@@ -69,5 +70,29 @@ public class SessionImpl implements Session {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "SessionImpl{" +
+                "gson=" + gson +
+                ", file=" + file +
+                ", reader=" + reader +
+                ", writer=" + writer +
+                ", isClose=" + isClose +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        SessionImpl session = (SessionImpl) object;
+        return isClose == session.isClose && Objects.equals(gson, session.gson) && Objects.equals(file, session.file) && Objects.equals(reader, session.reader) && Objects.equals(writer, session.writer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(gson, file, reader, writer, isClose);
     }
 }
