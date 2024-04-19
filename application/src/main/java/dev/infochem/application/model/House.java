@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * The type House.
  */
-public class House {
+public class House implements Comparable<House> {
     private String name;
     private Integer year;
     private int numberOfLifts;
@@ -91,5 +91,13 @@ public class House {
     @Override
     public int hashCode() {
         return Objects.hash(name, year, numberOfLifts);
+    }
+
+    @Override
+    public int compareTo(House o) {
+        int compare = 0;
+        compare += getYear() - o.getYear();
+        compare += getNumberOfLifts() - o.getNumberOfLifts();
+        return compare;
     }
 }

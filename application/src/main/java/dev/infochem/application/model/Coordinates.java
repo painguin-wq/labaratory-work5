@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * The type Coordinates.
  */
-public class Coordinates {
+public class Coordinates implements Comparable<Coordinates>{
     private Long x;
     private int y;
 
@@ -75,5 +75,13 @@ public class Coordinates {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
+    }
+
+    @Override
+    public int compareTo(Coordinates o) {
+        int compare = 0;
+        compare += (int) (getX() - o.getX());
+        compare += getY() - o.getY();
+        return compare;
     }
 }
