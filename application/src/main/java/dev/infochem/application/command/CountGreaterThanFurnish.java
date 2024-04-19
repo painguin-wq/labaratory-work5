@@ -18,6 +18,7 @@ public class CountGreaterThanFurnish extends DefaultCommand {
                 furnishNumber = Furnish.valueOf(furnish).ordinal();
             } catch (IllegalArgumentException ex) {
                 System.out.println("В параметр команды count_greater_than_furnish нужно передать один из элементов из enum Furnish.\nДоступные элементы:  NONE, BAD, LITTLE");
+                furnishNumber = Furnish.valueOf(furnish).ordinal();
             }
         }
         FlatManager fileManager = FileManagerFactory.create();
