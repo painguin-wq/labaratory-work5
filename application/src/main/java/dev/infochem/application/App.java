@@ -29,12 +29,12 @@ public class App extends Application {
             FileManagerFactory.initialize(pathToDatabase);
             launch();
             while (true) {
-                System.out.print("Enter commands: ");
+                System.out.print("Ввод команд: ");
                 String[] cmdArgs = new CommandsScanner(System.in).nextCommand().split(" ");
                 executeActions(getProject(), cmdArgs);
             }
         } else {
-            System.out.println("To work with the library, you need to specify the database path with the first parameter");
+            System.out.println("Для работы с приложением вам необходимо указать путь к базе данных с помощью первого параметра");
         }
     }
 }

@@ -92,7 +92,7 @@ public abstract class Application {
                 action.execute();
             }
         } catch (UnknownCommandException e) {
-            System.out.println("No commands found");
+            System.out.println("Команда не найдена");
         }
     }
 

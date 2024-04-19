@@ -6,6 +6,7 @@ import dev.infochem.clilibrary.DefaultCommand;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * The type Execute script command.
@@ -29,13 +30,15 @@ public class ExecuteScriptCommand extends DefaultCommand {
         }
         ArrayList<String> commands = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            reader.lines().forEach(commands::add);
+            reader.lines().filter(Objects::nonNull).filter((line) -> !line.isEmpty()).forEach(commands::add);
+            for (String cmd : commands) {
+                if (cmd.contains(getProject().getCommands().getNameByType(ExecuteScriptCommand.class))) {
+                    System.out.printf("Файл скрипта не может рекурсивно содержать комманду %s%n", getProject().getCommands().getNameByType(ExecuteScriptCommand.class));
+                    return;
+                }
+            }
         } catch (IOException e) {
             System.out.printf("Ошибка чтения файла (Путь: %s)%n", path);
-            return;
-        }
-        if (commands.contains(getProject().getCommands().getNameByType(ExecuteScriptCommand.class))) {
-            System.out.printf("Файл скрипта не может рекурсивно содержать комманду %s%n", getProject().getCommands().getNameByType(ExecuteScriptCommand.class));
             return;
         }
         for (String cmd : commands) {
