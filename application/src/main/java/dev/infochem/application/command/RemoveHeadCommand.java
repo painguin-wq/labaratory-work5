@@ -8,7 +8,13 @@ import dev.infochem.clilibrary.DefaultCommand;
 
 import java.util.ArrayDeque;
 
+/**
+ * The type Remove head command.
+ */
 public class RemoveHeadCommand extends DefaultCommand {
+    /**
+     * Remove.
+     */
     @CommandAction
     void remove() {
         FlatManager flatManager = FileManagerFactory.create();

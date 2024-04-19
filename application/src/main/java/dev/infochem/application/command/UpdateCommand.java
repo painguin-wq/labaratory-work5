@@ -12,7 +12,15 @@ import dev.infochem.clilibrary.DefaultCommand;
 import java.lang.reflect.Field;
 import java.util.Optional;
 
+/**
+ * The type Update command.
+ */
 public class UpdateCommand extends DefaultCommand {
+    /**
+     * Update.
+     *
+     * @param id the id
+     */
     @CommandAction
     void update(Integer id) throws NoSuchFieldException, IllegalAccessException {
         FlatManager dataManager = FileManagerFactory.create();

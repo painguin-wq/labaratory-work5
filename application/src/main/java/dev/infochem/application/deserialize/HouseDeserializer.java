@@ -5,6 +5,9 @@ import dev.infochem.application.model.House;
 
 import java.lang.reflect.Type;
 
+/**
+ * The type House deserializer.
+ */
 public class HouseDeserializer implements JsonDeserializer<House> {
     @Override
     public House deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {

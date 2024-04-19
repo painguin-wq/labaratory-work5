@@ -8,7 +8,13 @@ import dev.infochem.clilibrary.DefaultCommand;
 
 import java.util.ArrayDeque;
 
+/**
+ * The type Remove first command.
+ */
 public class RemoveFirstCommand extends DefaultCommand {
+    /**
+     * Remove.
+     */
     @CommandAction
     void remove() {
         FlatManager flatManager = FileManagerFactory.create();

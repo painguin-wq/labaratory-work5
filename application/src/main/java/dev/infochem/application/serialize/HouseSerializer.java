@@ -5,6 +5,9 @@ import dev.infochem.application.model.House;
 
 import java.lang.reflect.Type;
 
+/**
+ * The type House serializer.
+ */
 public class HouseSerializer implements JsonSerializer<House> {
     @Override
     public JsonElement serialize(House house, Type type, JsonSerializationContext jsonSerializationContext) {

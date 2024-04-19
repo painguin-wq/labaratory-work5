@@ -9,7 +9,15 @@ import dev.infochem.clilibrary.DefaultCommand;
 import java.util.ArrayDeque;
 import java.util.Optional;
 
+/**
+ * The type Remove by id command.
+ */
 public class RemoveByIdCommand extends DefaultCommand {
+    /**
+     * Remove.
+     *
+     * @param id the id
+     */
     @CommandAction
     void remove(Integer id) {
         FlatManager flatManager = FileManagerFactory.create();

@@ -3,6 +3,9 @@ package dev.infochem.application.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+/**
+ * The type Flat.
+ */
 public class Flat {
     private long id;
     private String name;
@@ -15,9 +18,20 @@ public class Flat {
     private Furnish furnish;
     private House house;
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public long getId() {
         return id;
     }
+
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
     public void setId(long id) {
         if (id < 0) {
             throw new IllegalArgumentException("Field id should be more than 0");
@@ -25,10 +39,20 @@ public class Flat {
         this.id = id;
     }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
     public void setName(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Field name should be not null and not empty");
@@ -36,10 +60,20 @@ public class Flat {
         this.name = name;
     }
 
+    /**
+     * Gets coordinates.
+     *
+     * @return the coordinates
+     */
     public Coordinates getCoordinates() {
         return coordinates;
     }
 
+    /**
+     * Sets coordinates.
+     *
+     * @param coordinates the coordinates
+     */
     public void setCoordinates(Coordinates coordinates) {
         if (coordinates == null) {
             throw new IllegalArgumentException("Field coordinates should be not null");
@@ -47,10 +81,20 @@ public class Flat {
         this.coordinates = coordinates;
     }
 
+    /**
+     * Gets creation date.
+     *
+     * @return the creation date
+     */
     public LocalDate getCreationDate() {
         return creationDate;
     }
 
+    /**
+     * Sets creation date.
+     *
+     * @param creationDate the creation date
+     */
     public void setCreationDate(LocalDate creationDate) {
         if (creationDate == null) {
             throw new IllegalArgumentException("Field creationDate should be not null");
@@ -58,10 +102,20 @@ public class Flat {
         this.creationDate = creationDate;
     }
 
+    /**
+     * Gets area.
+     *
+     * @return the area
+     */
     public float getArea() {
         return area;
     }
 
+    /**
+     * Sets area.
+     *
+     * @param area the area
+     */
     public void setArea(float area) {
         if (area < 0) {
             throw new IllegalArgumentException("Field area should be more than 0");
@@ -69,10 +123,20 @@ public class Flat {
         this.area = area;
     }
 
+    /**
+     * Gets number of rooms.
+     *
+     * @return the number of rooms
+     */
     public Long getNumberOfRooms() {
         return numberOfRooms;
     }
 
+    /**
+     * Sets number of rooms.
+     *
+     * @param numberOfRooms the number of rooms
+     */
     public void setNumberOfRooms(Long numberOfRooms) {
         if (numberOfRooms != null && numberOfRooms < 0) {
             throw new IllegalArgumentException("Field numberOfRooms should be more than 0");
@@ -80,10 +144,20 @@ public class Flat {
         this.numberOfRooms = numberOfRooms;
     }
 
+    /**
+     * Gets number of bathrooms.
+     *
+     * @return the number of bathrooms
+     */
     public long getNumberOfBathrooms() {
         return numberOfBathrooms;
     }
 
+    /**
+     * Sets number of bathrooms.
+     *
+     * @param numberOfBathrooms the number of bathrooms
+     */
     public void setNumberOfBathrooms(long numberOfBathrooms) {
         if (numberOfBathrooms < 0) {
             throw new IllegalArgumentException("Field numberOfBathrooms should be more than 0");
@@ -91,10 +165,20 @@ public class Flat {
         this.numberOfBathrooms = numberOfBathrooms;
     }
 
+    /**
+     * Gets time to metro by transport.
+     *
+     * @return the time to metro by transport
+     */
     public float getTimeToMetroByTransport() {
         return timeToMetroByTransport;
     }
 
+    /**
+     * Sets time to metro by transport.
+     *
+     * @param timeToMetroByTransport the time to metro by transport
+     */
     public void setTimeToMetroByTransport(float timeToMetroByTransport) {
         if (timeToMetroByTransport < 0) {
             throw new IllegalArgumentException("Field timeToMetroByTransport should be more than 0");
@@ -102,10 +186,20 @@ public class Flat {
         this.timeToMetroByTransport = timeToMetroByTransport;
     }
 
+    /**
+     * Gets furnish.
+     *
+     * @return the furnish
+     */
     public Furnish getFurnish() {
         return furnish;
     }
 
+    /**
+     * Sets furnish.
+     *
+     * @param furnish the furnish
+     */
     public void setFurnish(Furnish furnish) {
         if (furnish == null) {
             throw new IllegalArgumentException("Field furnish should be not null");
@@ -113,10 +207,20 @@ public class Flat {
         this.furnish = furnish;
     }
 
+    /**
+     * Gets house.
+     *
+     * @return the house
+     */
     public House getHouse() {
         return house;
     }
 
+    /**
+     * Sets house.
+     *
+     * @param house the house
+     */
     public void setHouse(House house) {
         this.house = house;
     }
