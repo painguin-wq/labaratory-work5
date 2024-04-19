@@ -12,6 +12,8 @@ import dev.infochem.transactionapi.SessionFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayDeque;
 import java.util.stream.Collectors;
 
@@ -20,6 +22,7 @@ import java.util.stream.Collectors;
  */
 public class FlatManager implements DataManager<ArrayDeque<Flat>> {
     private final File DATABASE_FILE;
+    private final LocalDateTime creationDate = LocalDateTime.now();
     private final JsonSerializer<Flat> serializer = new FlatSerializer();
     private final JsonDeserializer<Flat> deserializer = new FlatDeserializer();
     private ArrayDeque<Flat> flats;
@@ -39,6 +42,10 @@ public class FlatManager implements DataManager<ArrayDeque<Flat>> {
         }
         SessionFactory.create(DATABASE_FILE);
         flats = readData();
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
     }
     @Override
     public ArrayDeque<Flat> getData() {
